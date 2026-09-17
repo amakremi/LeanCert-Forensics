@@ -1,0 +1,49 @@
+# Python / environment
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.pytest_tmp/
+
+# Lean build artifacts and generated (per-trace) Lean certificates
+.lake/
+lean/.lake/
+lean/LeanCert/Generated/
+lean/LeanCert/GeneratedModes/
+
+# Downloaded / derived forensic datasets (not distributed in this repo;
+# see README.md "Public Dataset Grounding" for links and how to fetch them)
+datasets/raw/
+datasets/derived/
+datasets/metadata/
+datasets/manifests/
+
+# Generated traces, per-trace Lean output, and per-trace reports
+generated/
+traces/
+reports/
+
+# Controlled benchmark holdout material (kept out of a shared repo so the
+# locked/blinded ground truth is never distributed alongside the code)
+benchmark/development/
+benchmark/holdout/
+benchmark/holdout_v2/
+benchmark/sub_obligation_holdout_v1/
+benchmark/generated/
+# Ground-truth label mapping for the blinded holdout benchmark (would leak
+# the answer key if distributed; the lock hash file is kept for integrity
+# verification without exposing labels).
+benchmark/manifests/holdout_mapping.json
+
+# Manuscript build directory (not part of the code artifact)
+paper/
+
+# Full experiment results (large, regenerable). Only the single showcase
+# figure and table below are tracked.
+results/*
+!results/figures/
+!results/paper_tables/
+results/figures/*
+!results/figures/confusion_matrix.png
+results/paper_tables/*
+!results/paper_tables/table_holdout_metrics.md

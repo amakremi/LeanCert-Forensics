@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "leancert-forensics"
+version = "0.1.0"
+description = "Proof-carrying assurance research prototype for digital evidence validation"
+requires-python = ">=3.11"
+dependencies = [
+  "pydantic>=2.0",
+  "rich>=13.0",
+  "matplotlib>=3.8",
+  "pandas>=2.0",
+  "pyyaml>=6.0",
+  "requests>=2.31",
+  "pytsk3>=20260715",
+]
+
+[project.scripts]
+leancert = "leancert.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q -p no:cacheprovider --basetemp=results/.pytest_runtime"
+
+[tool.setuptools.packages.find]
+include = ["leancert*"]

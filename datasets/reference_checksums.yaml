@@ -1,0 +1,49 @@
+references:
+  - source_name: NIST CFReDS
+    artifact_name: DFR-01 FAT
+    file_name: dfr-01-fat.dd.bz2
+    algorithm: sha256
+    expected_value: ""
+    reference_url: https://cfreds-archive.nist.gov/dfr-test-images.html
+    retrieval_date_utc: "2026-07-28"
+    verification_note: No checksum was published on the official dataset page.
+  - source_name: NIST CFReDS
+    artifact_name: DFR-01 NTFS
+    file_name: dfr-01-ntfs.dd.bz2
+    algorithm: sha256
+    expected_value: ""
+    reference_url: https://cfreds-archive.nist.gov/dfr-test-images.html
+    retrieval_date_utc: "2026-07-28"
+    verification_note: No checksum was published on the official dataset page.
+  - source_name: NIST CFReDS
+    artifact_name: DFR-02 FAT
+    file_name: dfr-02-fat.dd.bz2
+    algorithm: sha256
+    expected_value: ""
+    reference_url: https://cfreds-archive.nist.gov/dfr-test-images.html
+    retrieval_date_utc: "2026-07-28"
+    verification_note: No checksum was published on the official dataset page.
+  - source_name: NIST CFReDS
+    artifact_name: L0 Graphic
+    file_name: L0_Graphic.dd.bz2
+    algorithm: sha256
+    expected_value: ""
+    reference_url: https://cfreds-archive.nist.gov/FileCarving/index.html
+    retrieval_date_utc: "2026-07-28"
+    verification_note: No checksum was published on the official dataset page.
+  - source_name: NIST CFReDS
+    artifact_name: L0 Documents
+    file_name: L0_Documents.dd.bz2
+    algorithm: sha256
+    expected_value: ""
+    reference_url: https://cfreds-archive.nist.gov/FileCarving/index.html
+    retrieval_date_utc: "2026-07-28"
+    verification_note: No checksum was published on the official dataset page.
+  - source_name: NIST CFReDS
+    artifact_name: L0 Archive
+    file_name: L0_Archive.dd.bz2
+    algorithm: sha256
+    expected_value: ""
+    reference_url: https://cfreds-archive.nist.gov/FileCarving/index.html
+    retrieval_date_utc: "2026-07-28"
+    verification_note: No checksum was published on the official dataset page.

@@ -1,0 +1,55 @@
+sources:
+  - source_name: "Digital Corpora"
+    source_type: "public_forensic_corpus"
+    usage_note: "Public forensic corpus for research and education; scenario documentation is redistributed by its publisher."
+    artifacts:
+      - artifact_name: "Lone Wolf scenario bill of materials"
+        url: "https://downloads.digitalcorpora.org/corpora/scenarios/2018-lonewolf/0%20%20README.pdf"
+        filename: "2018-lonewolf-readme.pdf"
+        kind: "report"
+        expected_format: "pdf"
+        max_size_mb: 100
+        enabled: true
+        usage_note: "Public Digital Corpora scenario documentation used for research and education."
+
+  - source_name: "Wireshark Sample Captures"
+    source_type: "public_network_capture_samples"
+    usage_note: "Public, benign protocol samples published by the Wireshark project for testing and education."
+    artifacts:
+      - artifact_name: "HTTP sample capture"
+        url: "https://gitlab.com/wireshark/wireshark/-/raw/master/test/captures/http.pcap"
+        filename: "http.pcap"
+        kind: "network_capture"
+        expected_format: "pcap"
+        max_size_mb: 100
+        enabled: true
+        usage_note: "Small public Wireshark HTTP capture maintained as test data in the official repository."
+      - artifact_name: "SIP message log sample"
+        url: "https://gitlab.com/wireshark/wireshark/-/raw/master/test/captures/sipmsg.log"
+        filename: "sipmsg.log"
+        kind: "log_file"
+        expected_format: "text_trace"
+        max_size_mb: 100
+        enabled: true
+        usage_note: "Public textual network trace sample published for Wireshark format testing."
+      - artifact_name: "Community ID compressed capture sample"
+        url: "https://gitlab.com/wireshark/wireshark/-/raw/master/test/captures/communityid.pcap.gz"
+        filename: "communityid.pcap.gz"
+        kind: "unknown_public_artifact"
+        expected_format: "pcap_gz"
+        max_size_mb: 100
+        enabled: true
+        usage_note: "Small compressed public capture maintained as test data in the official Wireshark repository."
+
+  - source_name: "NIST CFReDS"
+    source_type: "public_forensic_reference_dataset"
+    usage_note: "NIST Computer Forensic Reference Data Sets are public reference data for forensic tool testing and training."
+    artifacts:
+      - artifact_name: "NIST CFReDS small artifact"
+        url: "MANUAL_DOWNLOAD_REQUIRED"
+        manual_download_url: "https://cfreds.nist.gov/"
+        kind: "unknown_public_artifact"
+        expected_format: "raw_or_e01_or_zip"
+        max_size_mb: 100
+        enabled: true
+        usage_note: "Manual selection is required; register only a legitimately obtained public CFReDS artifact."

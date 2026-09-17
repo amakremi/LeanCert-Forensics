@@ -1,0 +1,176 @@
+requirements:
+  - requirement_id: REQ-ID-001
+    name: IdentityCompleteness
+    description: Required identifiers and descriptive identity fields are non-empty.
+    scope: Trace, evidence, actors, events, and report claims.
+    source_or_rationale: Internal assurance model; not a claim of legal sufficiency.
+    python_check: check_identity
+    lean_predicate: IdentityComplete
+    lean_theorem: validTrace_implies_identity
+    positive_test_ids: [TEST-ID-POS-001]
+    negative_test_ids: [TEST-ID-NEG-001]
+    benchmark_mutations: [DEV-001]
+    failure_explanation_support: true
+    status: formalized
+    sub_obligations: [trace identity, evidence identity, actor identity, event identity, claim identity]
+    known_exclusions: [Government-issued identity authentication is outside the model.]
+  - requirement_id: REQ-REF-001
+    name: ReferentialIntegrity
+    description: Identifiers are unique and all internal references resolve.
+    scope: Evidence, actors, events, claims, and parent relations.
+    source_or_rationale: Internal relational consistency.
+    python_check: check_references
+    lean_predicate: ReferentiallyValid
+    lean_theorem: validTrace_implies_referential_integrity
+    positive_test_ids: [TEST-REF-POS-001]
+    negative_test_ids: [TEST-REF-NEG-001]
+    benchmark_mutations: [DEV-002, HOLDOUT-004, HOLDOUT-005]
+    failure_explanation_support: true
+    status: formalized
+    sub_obligations: [unique identifiers, event evidence reference, event actor reference, claim support reference, derived parent reference]
+    known_exclusions: [External database identifiers are outside the model.]
+  - requirement_id: REQ-ART-001
+    name: PublicArtifactIntegrity
+    description: Locally registered bytes match declared hashes and sizes when available.
+    scope: Local artifact anchoring.
+    source_or_rationale: Reproducible local artifact binding.
+    python_check: check_public_artifacts
+    lean_predicate: ArtifactIntegrityValid
+    lean_theorem: validTrace_implies_artifact_integrity
+    positive_test_ids: [TEST-ART-POS-001]
+    negative_test_ids: [TEST-ART-NEG-001]
+    benchmark_mutations: [DEV-ART-LOCAL]
+    failure_explanation_support: true
+    status: formalized
+    sub_obligations: [artifact availability, SHA-256 match, size match]
+    known_exclusions: [Publisher authenticity is audited separately and is not proved in Lean.]
+  - requirement_id: REQ-CUST-001
+    name: CustodyContinuity
+    description: Holder transitions link continuously for each evidence item.
+    scope: Modeled digital custody events.
+    source_or_rationale: Internal custody transition semantics.
+    python_check: check_custody
+    lean_predicate: CustodyContinuous
+    lean_theorem: validTrace_implies_custody
+    positive_test_ids: [TEST-CUST-POS-001]
+    negative_test_ids: [TEST-CUST-NEG-001]
+    benchmark_mutations: [HOLDOUT-001]
+    failure_explanation_support: true
+    status: formalized
+    sub_obligations: [acquisition origin, previous-holder continuity, transfer assignee, preservation assignee]
+    known_exclusions: [Physical seal authenticity and human identity authentication are outside the model.]
+  - requirement_id: REQ-CHR-001
+    name: ChronologicalConsistency
+    description: Non-negative timestamps and modeled prerequisites precede reporting and derivation.
+    scope: Timestamped event relations.
+    source_or_rationale: Internal temporal ordering model.
+    python_check: check_chronology
+    lean_predicate: ChronologicallyConsistent
+    lean_theorem: validTrace_implies_chronology
+    positive_test_ids: [TEST-CHR-POS-001]
+    negative_test_ids: [TEST-CHR-NEG-001]
+    benchmark_mutations: [DEV-003]
+    failure_explanation_support: true
+    status: formalized
+    sub_obligations: [non-negative and sequence-monotone timestamps, report prerequisites, parent-before-derivative]
+    known_exclusions: [Clock synchronization accuracy is outside the model.]
+  - requirement_id: REQ-HASH-001
+    name: HashContinuity
+    description: Acquisition starts at genesis and adjacent events preserve declared hash links.
+    scope: Modeled cryptographic link fields.
+    source_or_rationale: Internal hash-chain consistency.
+    python_check: check_hashes
+    lean_predicate: HashContinuous
+    lean_theorem: validTrace_implies_hash_continuity
+    positive_test_ids: [TEST-HASH-POS-001]
+    negative_test_ids: [TEST-HASH-NEG-001]
+    benchmark_mutations: [HOLDOUT-002, HOLDOUT-006]
+    failure_explanation_support: true
+    status: formalized
+    sub_obligations: [genesis link, adjacent link, unauthorized hash change, derivative parent]
+    known_exclusions: [Cryptographic algorithm collision resistance is assumed, not proved.]
+  - requirement_id: REQ-AUTH-001
+    name: AuthorizedHandling
+    description: Actor roles are permitted to perform their declared actions.
+    scope: Closed role-action authorization matrix.
+    source_or_rationale: Prototype policy matrix.
+    python_check: check_authorization
+    lean_predicate: AuthorizedHandling
+    lean_theorem: validTrace_implies_authorization
+    positive_test_ids: [TEST-AUTH-POS-001]
+    negative_test_ids: [TEST-AUTH-NEG-001]
+    benchmark_mutations: [HOLDOUT-003]
+    failure_explanation_support: true
+    status: formalized
+    sub_obligations: [role resolution, role-action permission]
+    known_exclusions: [Organization-specific delegation and emergency overrides are outside the model.]
+  - requirement_id: REQ-LIFE-001
+    name: LifecycleCorrectness
+    description: Modeled lifecycle prerequisites hold for acquisition, analysis, reporting, derivation, and archive.
+    scope: Prototype forensic workflow.
+    source_or_rationale: Declared workflow semantics.
+    python_check: check_lifecycle
+    lean_predicate: LifecycleCorrect
+    lean_theorem: validTrace_implies_lifecycle
+    positive_test_ids: [TEST-LIFE-POS-001]
+    negative_test_ids: [TEST-LIFE-NEG-001]
+    benchmark_mutations: [DEV-003]
+    failure_explanation_support: true
+    status: formalized
+    sub_obligations: [preservation and transfer after acquisition, examination and analysis after preservation or derivation, reporting after required analysis or examination, archive after report, derivative parent readiness]
+    known_exclusions: [Jurisdiction-specific workflow rules are outside the model.]
+  - requirement_id: REQ-RPT-001
+    name: ReportTraceability
+    description: Claims identify existing supporting evidence that passed upstream checks.
+    scope: Modeled report claims.
+    source_or_rationale: Internal claim-support dependency.
+    python_check: check_report_traceability
+    lean_predicate: ReportTraceable
+    lean_theorem: validTrace_implies_report_traceability
+    positive_test_ids: [TEST-RPT-POS-001]
+    negative_test_ids: [TEST-RPT-NEG-001]
+    benchmark_mutations: [HOLDOUT-004]
+    failure_explanation_support: true
+    status: formalized
+    sub_obligations: [claim text, support presence, support resolution, upstream support validity]
+    known_exclusions: [Scientific truth of a supported claim is not established.]
+python_only_properties:
+  - Local filesystem readability and byte-level artifact hash recomputation.
+lean_only_properties:
+  - Generated artifact well-formedness is distinguished from trace acceptance.
+sub_obligation_mappings:
+  - {id: REQ-ID-001-SUB-01, python_predicate: leancert.sub_obligations.trace_identity_present, lean_predicate: TraceIdentityPresent, positive_python_test: PY-POS-001, negative_python_test: PY-NEG-001, positive_lean_test: LEAN-POS-001, negative_lean_test: LEAN-NEG-001, mutation_id: SUBMUT-001}
+  - {id: REQ-ID-001-SUB-02, python_predicate: leancert.sub_obligations.evidence_identity_present, lean_predicate: EvidenceIdentityPresent, positive_python_test: PY-POS-002, negative_python_test: PY-NEG-002, positive_lean_test: LEAN-POS-002, negative_lean_test: LEAN-NEG-002, mutation_id: SUBMUT-002}
+  - {id: REQ-ID-001-SUB-03, python_predicate: leancert.sub_obligations.actor_identity_present, lean_predicate: ActorIdentityPresent, positive_python_test: PY-POS-003, negative_python_test: PY-NEG-003, positive_lean_test: LEAN-POS-003, negative_lean_test: LEAN-NEG-003, mutation_id: SUBMUT-003}
+  - {id: REQ-ID-001-SUB-04, python_predicate: leancert.sub_obligations.event_identity_present, lean_predicate: EventIdentityPresent, positive_python_test: PY-POS-004, negative_python_test: PY-NEG-004, positive_lean_test: LEAN-POS-004, negative_lean_test: LEAN-NEG-004, mutation_id: SUBMUT-004}
+  - {id: REQ-ID-001-SUB-05, python_predicate: leancert.sub_obligations.claim_identity_present, lean_predicate: ClaimIdentityPresent, positive_python_test: PY-POS-005, negative_python_test: PY-NEG-005, positive_lean_test: LEAN-POS-005, negative_lean_test: LEAN-NEG-005, mutation_id: SUBMUT-005}
+  - {id: REQ-REF-001-SUB-01, python_predicate: leancert.sub_obligations.unique_identifiers, lean_predicate: UniqueIdentifiers, positive_python_test: PY-POS-006, negative_python_test: PY-NEG-006, positive_lean_test: LEAN-POS-006, negative_lean_test: LEAN-NEG-006, mutation_id: SUBMUT-006}
+  - {id: REQ-REF-001-SUB-02, python_predicate: leancert.sub_obligations.event_evidence_reference_exists, lean_predicate: EventEvidenceReferenceExists, positive_python_test: PY-POS-007, negative_python_test: PY-NEG-007, positive_lean_test: LEAN-POS-007, negative_lean_test: LEAN-NEG-007, mutation_id: SUBMUT-007}
+  - {id: REQ-REF-001-SUB-03, python_predicate: leancert.sub_obligations.event_actor_reference_exists, lean_predicate: EventActorReferenceExists, positive_python_test: PY-POS-008, negative_python_test: PY-NEG-008, positive_lean_test: LEAN-POS-008, negative_lean_test: LEAN-NEG-008, mutation_id: SUBMUT-008}
+  - {id: REQ-REF-001-SUB-04, python_predicate: leancert.sub_obligations.claim_support_reference_exists, lean_predicate: ClaimSupportReferenceExists, positive_python_test: PY-POS-009, negative_python_test: PY-NEG-009, positive_lean_test: LEAN-POS-009, negative_lean_test: LEAN-NEG-009, mutation_id: SUBMUT-009}
+  - {id: REQ-REF-001-SUB-05, python_predicate: leancert.sub_obligations.derived_parent_reference_exists, lean_predicate: DerivedParentReferenceExists, positive_python_test: PY-POS-010, negative_python_test: PY-NEG-010, positive_lean_test: LEAN-POS-010, negative_lean_test: LEAN-NEG-010, mutation_id: SUBMUT-010}
+  - {id: REQ-ART-001-SUB-01, python_predicate: leancert.sub_obligations.artifact_available, lean_predicate: ArtifactAvailable, positive_python_test: PY-POS-011, negative_python_test: PY-NEG-011, positive_lean_test: LEAN-POS-011, negative_lean_test: LEAN-NEG-011, mutation_id: SUBMUT-011}
+  - {id: REQ-ART-001-SUB-02, python_predicate: leancert.sub_obligations.artifact_sha256_matches, lean_predicate: ArtifactSha256Matches, positive_python_test: PY-POS-012, negative_python_test: PY-NEG-012, positive_lean_test: LEAN-POS-012, negative_lean_test: LEAN-NEG-012, mutation_id: SUBMUT-012}
+  - {id: REQ-ART-001-SUB-03, python_predicate: leancert.sub_obligations.artifact_size_matches, lean_predicate: ArtifactSizeMatches, positive_python_test: PY-POS-013, negative_python_test: PY-NEG-013, positive_lean_test: LEAN-POS-013, negative_lean_test: LEAN-NEG-013, mutation_id: SUBMUT-013}
+  - {id: REQ-CUST-001-SUB-01, python_predicate: leancert.sub_obligations.acquisition_origin, lean_predicate: AcquisitionOrigin, positive_python_test: PY-POS-014, negative_python_test: PY-NEG-014, positive_lean_test: LEAN-POS-014, negative_lean_test: LEAN-NEG-014, mutation_id: SUBMUT-014}
+  - {id: REQ-CUST-001-SUB-02, python_predicate: leancert.sub_obligations.previous_holder_continuity, lean_predicate: PreviousHolderContinuity, positive_python_test: PY-POS-015, negative_python_test: PY-NEG-015, positive_lean_test: LEAN-POS-015, negative_lean_test: LEAN-NEG-015, mutation_id: SUBMUT-015}
+  - {id: REQ-CUST-001-SUB-03, python_predicate: leancert.sub_obligations.transfer_assignee, lean_predicate: TransferAssignee, positive_python_test: PY-POS-016, negative_python_test: PY-NEG-016, positive_lean_test: LEAN-POS-016, negative_lean_test: LEAN-NEG-016, mutation_id: SUBMUT-016}
+  - {id: REQ-CUST-001-SUB-04, python_predicate: leancert.sub_obligations.preservation_assignee, lean_predicate: PreservationAssignee, positive_python_test: PY-POS-017, negative_python_test: PY-NEG-017, positive_lean_test: LEAN-POS-017, negative_lean_test: LEAN-NEG-017, mutation_id: SUBMUT-017}
+  - {id: REQ-CHR-001-SUB-01, python_predicate: leancert.sub_obligations.nonnegative_sequence_timestamps, lean_predicate: NonnegativeSequenceTimestamps, positive_python_test: PY-POS-018, negative_python_test: PY-NEG-018, positive_lean_test: LEAN-POS-018, negative_lean_test: LEAN-NEG-018, mutation_id: SUBMUT-018}
+  - {id: REQ-CHR-001-SUB-02, python_predicate: leancert.sub_obligations.report_prerequisites, lean_predicate: ReportPrerequisites, positive_python_test: PY-POS-019, negative_python_test: PY-NEG-019, positive_lean_test: LEAN-POS-019, negative_lean_test: LEAN-NEG-019, mutation_id: SUBMUT-019}
+  - {id: REQ-CHR-001-SUB-03, python_predicate: leancert.sub_obligations.parent_before_derivative, lean_predicate: ParentBeforeDerivative, positive_python_test: PY-POS-020, negative_python_test: PY-NEG-020, positive_lean_test: LEAN-POS-020, negative_lean_test: LEAN-NEG-020, mutation_id: SUBMUT-020}
+  - {id: REQ-HASH-001-SUB-01, python_predicate: leancert.sub_obligations.genesis_link, lean_predicate: GenesisLink, positive_python_test: PY-POS-021, negative_python_test: PY-NEG-021, positive_lean_test: LEAN-POS-021, negative_lean_test: LEAN-NEG-021, mutation_id: SUBMUT-021}
+  - {id: REQ-HASH-001-SUB-02, python_predicate: leancert.sub_obligations.adjacent_hash_link, lean_predicate: AdjacentHashLink, positive_python_test: PY-POS-022, negative_python_test: PY-NEG-022, positive_lean_test: LEAN-POS-022, negative_lean_test: LEAN-NEG-022, mutation_id: SUBMUT-022}
+  - {id: REQ-HASH-001-SUB-03, python_predicate: leancert.sub_obligations.unauthorized_hash_unchanged, lean_predicate: UnauthorizedHashUnchanged, positive_python_test: PY-POS-023, negative_python_test: PY-NEG-023, positive_lean_test: LEAN-POS-023, negative_lean_test: LEAN-NEG-023, mutation_id: SUBMUT-023}
+  - {id: REQ-HASH-001-SUB-04, python_predicate: leancert.sub_obligations.derivative_hash_parent, lean_predicate: DerivativeHashParent, positive_python_test: PY-POS-024, negative_python_test: PY-NEG-024, positive_lean_test: LEAN-POS-024, negative_lean_test: LEAN-NEG-024, mutation_id: SUBMUT-024}
+  - {id: REQ-AUTH-001-SUB-01, python_predicate: leancert.sub_obligations.role_resolution, lean_predicate: RoleResolution, positive_python_test: PY-POS-025, negative_python_test: PY-NEG-025, positive_lean_test: LEAN-POS-025, negative_lean_test: LEAN-NEG-025, mutation_id: SUBMUT-025}
+  - {id: REQ-AUTH-001-SUB-02, python_predicate: leancert.sub_obligations.role_action_permission, lean_predicate: RoleActionPermission, positive_python_test: PY-POS-026, negative_python_test: PY-NEG-026, positive_lean_test: LEAN-POS-026, negative_lean_test: LEAN-NEG-026, mutation_id: SUBMUT-026}
+  - {id: REQ-LIFE-001-SUB-01, python_predicate: leancert.sub_obligations.preserve_after_acquire, lean_predicate: PreserveAfterAcquire, positive_python_test: PY-POS-027, negative_python_test: PY-NEG-027, positive_lean_test: LEAN-POS-027, negative_lean_test: LEAN-NEG-027, mutation_id: SUBMUT-027}
+  - {id: REQ-LIFE-001-SUB-02, python_predicate: leancert.sub_obligations.analyze_after_preserve, lean_predicate: AnalyzeAfterPreserve, positive_python_test: PY-POS-028, negative_python_test: PY-NEG-028, positive_lean_test: LEAN-POS-028, negative_lean_test: LEAN-NEG-028, mutation_id: SUBMUT-028}
+  - {id: REQ-LIFE-001-SUB-03, python_predicate: leancert.sub_obligations.report_after_analysis, lean_predicate: ReportAfterAnalysis, positive_python_test: PY-POS-029, negative_python_test: PY-NEG-029, positive_lean_test: LEAN-POS-029, negative_lean_test: LEAN-NEG-029, mutation_id: SUBMUT-029}
+  - {id: REQ-LIFE-001-SUB-04, python_predicate: leancert.sub_obligations.archive_after_report, lean_predicate: ArchiveAfterReport, positive_python_test: PY-POS-030, negative_python_test: PY-NEG-030, positive_lean_test: LEAN-POS-030, negative_lean_test: LEAN-NEG-030, mutation_id: SUBMUT-030}
+  - {id: REQ-LIFE-001-SUB-05, python_predicate: leancert.sub_obligations.derivative_parent_ready, lean_predicate: DerivativeParentReady, positive_python_test: PY-POS-031, negative_python_test: PY-NEG-031, positive_lean_test: LEAN-POS-031, negative_lean_test: LEAN-NEG-031, mutation_id: SUBMUT-031}
+  - {id: REQ-RPT-001-SUB-01, python_predicate: leancert.sub_obligations.claim_text_present, lean_predicate: ClaimTextPresent, positive_python_test: PY-POS-032, negative_python_test: PY-NEG-032, positive_lean_test: LEAN-POS-032, negative_lean_test: LEAN-NEG-032, mutation_id: SUBMUT-032}
+  - {id: REQ-RPT-001-SUB-02, python_predicate: leancert.sub_obligations.claim_support_present, lean_predicate: ClaimSupportPresent, positive_python_test: PY-POS-033, negative_python_test: PY-NEG-033, positive_lean_test: LEAN-POS-033, negative_lean_test: LEAN-NEG-033, mutation_id: SUBMUT-033}
+  - {id: REQ-RPT-001-SUB-03, python_predicate: leancert.sub_obligations.claim_support_resolved, lean_predicate: ClaimSupportResolved, positive_python_test: PY-POS-034, negative_python_test: PY-NEG-034, positive_lean_test: LEAN-POS-034, negative_lean_test: LEAN-NEG-034, mutation_id: SUBMUT-034}
+  - {id: REQ-RPT-001-SUB-04, python_predicate: leancert.sub_obligations.upstream_support_valid, lean_predicate: UpstreamSupportValid, positive_python_test: PY-POS-035, negative_python_test: PY-NEG-035, positive_lean_test: LEAN-POS-035, negative_lean_test: LEAN-NEG-035, mutation_id: SUBMUT-035}

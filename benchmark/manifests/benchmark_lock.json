@@ -1,0 +1,33 @@
+{
+  "creation_timestamp_utc": "2026-07-28T11:50:00.440130Z",
+  "random_seed": 20260726,
+  "repository_commit": null,
+  "files": [
+    {
+      "path": "benchmark/development/mutations.yaml",
+      "sha256": "5c1a46ddc102ec3c4409dd4fea08923cde101d8ad8551b2540b5bf63aaa28276",
+      "mutation_count": 3
+    },
+    {
+      "path": "benchmark/holdout/mutations.yaml",
+      "sha256": "e86f0457f4585e1dc4177f4a54ea8864222a756bb2c9b3476c24ef3e4609d256",
+      "mutation_count": 6
+    }
+  ],
+  "development_mutation_count": 3,
+  "holdout_mutation_count": 6,
+  "development_mutation_families": [
+    "evidence-reference-substitution",
+    "identity-erasure",
+    "lifecycle-order"
+  ],
+  "holdout_mutation_families": [
+    "acquisition-genesis-substitution",
+    "claim-support-extension",
+    "duplicate-event-identity",
+    "hash-link-substitution",
+    "holder-link-substitution",
+    "role-action-substitution"
+  ],
+  "benchmark_sha256": "dc3a99445faef4c892d6dd0f525b883704f7c6be6bdfe4c682e27154f766c1a2"
+}

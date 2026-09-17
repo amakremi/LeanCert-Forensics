@@ -1,0 +1,339 @@
+mutations:
+- mutation_id: SUBMUT-001
+  sub_obligation_id: REQ-ID-001-SUB-01
+  parent_requirement: IdentityCompleteness
+  declarative_transformation: Targeted transformation for trace identity
+  expected_direct_violation: REQ-ID-001-SUB-01
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-002
+  sub_obligation_id: REQ-ID-001-SUB-02
+  parent_requirement: IdentityCompleteness
+  declarative_transformation: Targeted transformation for evidence identity
+  expected_direct_violation: REQ-ID-001-SUB-02
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-003
+  sub_obligation_id: REQ-ID-001-SUB-03
+  parent_requirement: IdentityCompleteness
+  declarative_transformation: Targeted transformation for actor identity
+  expected_direct_violation: REQ-ID-001-SUB-03
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-004
+  sub_obligation_id: REQ-ID-001-SUB-04
+  parent_requirement: IdentityCompleteness
+  declarative_transformation: Targeted transformation for event identity
+  expected_direct_violation: REQ-ID-001-SUB-04
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-005
+  sub_obligation_id: REQ-ID-001-SUB-05
+  parent_requirement: IdentityCompleteness
+  declarative_transformation: Targeted transformation for claim identity
+  expected_direct_violation: REQ-ID-001-SUB-05
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-006
+  sub_obligation_id: REQ-REF-001-SUB-01
+  parent_requirement: ReferentialIntegrity
+  declarative_transformation: Targeted transformation for unique identifiers
+  expected_direct_violation: REQ-REF-001-SUB-01
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-007
+  sub_obligation_id: REQ-REF-001-SUB-02
+  parent_requirement: ReferentialIntegrity
+  declarative_transformation: Targeted transformation for event evidence reference
+  expected_direct_violation: REQ-REF-001-SUB-02
+  known_expected_cascades:
+  - REQ-CHR-001-SUB-02
+  - REQ-CUST-001-SUB-02
+  - REQ-LIFE-001-SUB-01
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-008
+  sub_obligation_id: REQ-REF-001-SUB-03
+  parent_requirement: ReferentialIntegrity
+  declarative_transformation: Targeted transformation for event actor reference
+  expected_direct_violation: REQ-REF-001-SUB-03
+  known_expected_cascades:
+  - REQ-AUTH-001-SUB-01
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-009
+  sub_obligation_id: REQ-REF-001-SUB-04
+  parent_requirement: ReferentialIntegrity
+  declarative_transformation: Targeted transformation for claim support reference
+  expected_direct_violation: REQ-REF-001-SUB-04
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-03
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-010
+  sub_obligation_id: REQ-REF-001-SUB-05
+  parent_requirement: ReferentialIntegrity
+  declarative_transformation: Targeted transformation for derived parent reference
+  expected_direct_violation: REQ-REF-001-SUB-05
+  known_expected_cascades:
+  - REQ-CHR-001-SUB-03
+  - REQ-LIFE-001-SUB-05
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-011
+  sub_obligation_id: REQ-ART-001-SUB-01
+  parent_requirement: PublicArtifactIntegrity
+  declarative_transformation: Targeted transformation for artifact availability
+  expected_direct_violation: REQ-ART-001-SUB-01
+  known_expected_cascades:
+  - REQ-ART-001-SUB-02
+  - REQ-ART-001-SUB-03
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-012
+  sub_obligation_id: REQ-ART-001-SUB-02
+  parent_requirement: PublicArtifactIntegrity
+  declarative_transformation: Targeted transformation for SHA-256 match
+  expected_direct_violation: REQ-ART-001-SUB-02
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-013
+  sub_obligation_id: REQ-ART-001-SUB-03
+  parent_requirement: PublicArtifactIntegrity
+  declarative_transformation: Targeted transformation for size match
+  expected_direct_violation: REQ-ART-001-SUB-03
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-014
+  sub_obligation_id: REQ-CUST-001-SUB-01
+  parent_requirement: CustodyContinuity
+  declarative_transformation: Targeted transformation for acquisition origin
+  expected_direct_violation: REQ-CUST-001-SUB-01
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-015
+  sub_obligation_id: REQ-CUST-001-SUB-02
+  parent_requirement: CustodyContinuity
+  declarative_transformation: Targeted transformation for previous-holder continuity
+  expected_direct_violation: REQ-CUST-001-SUB-02
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-016
+  sub_obligation_id: REQ-CUST-001-SUB-03
+  parent_requirement: CustodyContinuity
+  declarative_transformation: Targeted transformation for transfer assignee
+  expected_direct_violation: REQ-CUST-001-SUB-03
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-017
+  sub_obligation_id: REQ-CUST-001-SUB-04
+  parent_requirement: CustodyContinuity
+  declarative_transformation: Targeted transformation for preservation assignee
+  expected_direct_violation: REQ-CUST-001-SUB-04
+  known_expected_cascades:
+  - REQ-CUST-001-SUB-02
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-018
+  sub_obligation_id: REQ-CHR-001-SUB-01
+  parent_requirement: ChronologicalConsistency
+  declarative_transformation: Targeted transformation for non-negative and sequence-monotone
+    timestamps
+  expected_direct_violation: REQ-CHR-001-SUB-01
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-019
+  sub_obligation_id: REQ-CHR-001-SUB-02
+  parent_requirement: ChronologicalConsistency
+  declarative_transformation: Targeted transformation for report prerequisites
+  expected_direct_violation: REQ-CHR-001-SUB-02
+  known_expected_cascades:
+  - REQ-LIFE-001-SUB-03
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-020
+  sub_obligation_id: REQ-CHR-001-SUB-03
+  parent_requirement: ChronologicalConsistency
+  declarative_transformation: Targeted transformation for parent-before-derivative
+  expected_direct_violation: REQ-CHR-001-SUB-03
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-021
+  sub_obligation_id: REQ-HASH-001-SUB-01
+  parent_requirement: HashContinuity
+  declarative_transformation: Targeted transformation for genesis link
+  expected_direct_violation: REQ-HASH-001-SUB-01
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-022
+  sub_obligation_id: REQ-HASH-001-SUB-02
+  parent_requirement: HashContinuity
+  declarative_transformation: Targeted transformation for adjacent link
+  expected_direct_violation: REQ-HASH-001-SUB-02
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-023
+  sub_obligation_id: REQ-HASH-001-SUB-03
+  parent_requirement: HashContinuity
+  declarative_transformation: Targeted transformation for unauthorized hash change
+  expected_direct_violation: REQ-HASH-001-SUB-03
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-024
+  sub_obligation_id: REQ-HASH-001-SUB-04
+  parent_requirement: HashContinuity
+  declarative_transformation: Targeted transformation for derivative parent
+  expected_direct_violation: REQ-HASH-001-SUB-04
+  known_expected_cascades:
+  - REQ-REF-001-SUB-05
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-025
+  sub_obligation_id: REQ-AUTH-001-SUB-01
+  parent_requirement: AuthorizedHandling
+  declarative_transformation: Targeted transformation for role resolution
+  expected_direct_violation: REQ-AUTH-001-SUB-01
+  known_expected_cascades:
+  - REQ-REF-001-SUB-03
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-026
+  sub_obligation_id: REQ-AUTH-001-SUB-02
+  parent_requirement: AuthorizedHandling
+  declarative_transformation: Targeted transformation for role-action permission
+  expected_direct_violation: REQ-AUTH-001-SUB-02
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-027
+  sub_obligation_id: REQ-LIFE-001-SUB-01
+  parent_requirement: LifecycleCorrectness
+  declarative_transformation: Targeted transformation for preservation and transfer
+    after acquisition
+  expected_direct_violation: REQ-LIFE-001-SUB-01
+  known_expected_cascades:
+  - REQ-CHR-001-SUB-02
+  - REQ-LIFE-001-SUB-02
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-028
+  sub_obligation_id: REQ-LIFE-001-SUB-02
+  parent_requirement: LifecycleCorrectness
+  declarative_transformation: Targeted transformation for examination and analysis
+    after preservation or derivation
+  expected_direct_violation: REQ-LIFE-001-SUB-02
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-029
+  sub_obligation_id: REQ-LIFE-001-SUB-03
+  parent_requirement: LifecycleCorrectness
+  declarative_transformation: Targeted transformation for reporting after required
+    analysis or examination
+  expected_direct_violation: REQ-LIFE-001-SUB-03
+  known_expected_cascades:
+  - REQ-CHR-001-SUB-02
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-030
+  sub_obligation_id: REQ-LIFE-001-SUB-04
+  parent_requirement: LifecycleCorrectness
+  declarative_transformation: Targeted transformation for archive after report
+  expected_direct_violation: REQ-LIFE-001-SUB-04
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-031
+  sub_obligation_id: REQ-LIFE-001-SUB-05
+  parent_requirement: LifecycleCorrectness
+  declarative_transformation: Targeted transformation for derivative parent readiness
+  expected_direct_violation: REQ-LIFE-001-SUB-05
+  known_expected_cascades:
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-032
+  sub_obligation_id: REQ-RPT-001-SUB-01
+  parent_requirement: ReportTraceability
+  declarative_transformation: Targeted transformation for claim text
+  expected_direct_violation: REQ-RPT-001-SUB-01
+  known_expected_cascades:
+  - REQ-ID-001-SUB-05
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-033
+  sub_obligation_id: REQ-RPT-001-SUB-02
+  parent_requirement: ReportTraceability
+  declarative_transformation: Targeted transformation for support presence
+  expected_direct_violation: REQ-RPT-001-SUB-02
+  known_expected_cascades:
+  - REQ-ID-001-SUB-05
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-034
+  sub_obligation_id: REQ-RPT-001-SUB-03
+  parent_requirement: ReportTraceability
+  declarative_transformation: Targeted transformation for support resolution
+  expected_direct_violation: REQ-RPT-001-SUB-03
+  known_expected_cascades:
+  - REQ-REF-001-SUB-04
+  - REQ-RPT-001-SUB-04
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
+- mutation_id: SUBMUT-035
+  sub_obligation_id: REQ-RPT-001-SUB-04
+  parent_requirement: ReportTraceability
+  declarative_transformation: Targeted transformation for upstream support validity
+  expected_direct_violation: REQ-RPT-001-SUB-04
+  known_expected_cascades:
+  - REQ-HASH-001-SUB-02
+  scientific_rationale: Controlled content perturbation targeting the exact declared
+    child; any coupled failures are measured rather than suppressed.
